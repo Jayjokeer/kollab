@@ -27,7 +27,7 @@ const KollabSchema = new Schema<KollabDocument>(
     }
   },
   {
-    timestamps: { createdAt: true, updatedAt: false }
+    timestamps: { createdAt: true, updatedAt: true }
   }
 );
 

@@ -19,7 +19,7 @@ const DiscussionSchema = new Schema<DiscussionDocument>(
     author: { type: String, required: true }
   },
   {
-    timestamps: { createdAt: true, updatedAt: false }
+    timestamps: { createdAt: true, updatedAt: true }
   }
 );
 
