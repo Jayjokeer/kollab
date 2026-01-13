@@ -4,7 +4,7 @@ Backend API for the **Kollab** platform.
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Clone the repository
 ```bash
@@ -47,16 +47,16 @@ http://localhost:9000
 
 ---
 
-## 🏬 API Documentation (Postman)
+## API Documentation (Postman)
 
 Use the public Postman collection below to test all endpoints:
 
-👉 **Postman Collection**  
+ **Postman Collection**  
 https://www.postman.com/dev-demons/workspace/public-workspace/collection/26660523-f59b62a2-a3cc-41a3-ad42-07f1039ef4bf?action=share&source=copy-link&creator=26660523
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 - Node.js
 - Express
 - TypeScript
