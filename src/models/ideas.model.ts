@@ -4,7 +4,7 @@ export interface IdeaDocument extends Document {
   title: string;
   description: string;
   createdBy: string;
-  status: 'draft' | 'approved' ;
+  status: 'draft' | 'approved' | 'archived' ;
   createdAt: Date;
 }
 
@@ -15,7 +15,7 @@ const IdeaSchema = new Schema<IdeaDocument>(
     createdBy: { type: String, required: true },
     status: {
       type: String,
-      enum: ['draft', 'approved'],
+      enum: ['draft', 'approved', 'archived'],
       default: 'draft'
     }
   },

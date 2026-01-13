@@ -1,22 +1,23 @@
 import { Kollab } from '../models/kollab.model';
 import { Discussion } from '../models/discussion.model';
 import { Idea } from '../models/ideas.model';
+import { BadRequestError, NotFoundError } from '../errors/error';
 
 export const createKollabFromIdea = async (payload: any) => {
   const { ideaId } = payload;
 
   const idea = await Idea.findById(ideaId);
   if (!idea) {
-    throw new Error('Idea not found');
+    throw new NotFoundError('Idea not found');
   }
 
   if (idea.status !== 'approved') {
-    throw new Error('Idea must be approved before creating a Kollab');
+    throw new BadRequestError('Idea must be approved before creating a Kollab');
   }
 
   const existingKollab = await Kollab.findOne({ ideaId });
   if (existingKollab) {
-    throw new Error('This idea already has a Kollab');
+    throw new BadRequestError('This idea already has a Kollab');
   }
 
   return Kollab.create(payload);
@@ -31,7 +32,7 @@ export const getKollabWithDiscussions = async (
 
   const kollab = await Kollab.findById(kollabId).populate('ideaId');
   if (!kollab) {
-    throw new Error('Kollab not found');
+    throw new NotFoundError('Kollab not found');
   }
 
   const [discussions, total] = await Promise.all([
@@ -62,7 +63,7 @@ export const addDiscussionToKollab = async (
 ) => {
   const kollab = await Kollab.findById(kollabId);
   if (!kollab) {
-    throw new Error('Kollab not found');
+    throw new NotFoundError('Kollab not found');
   }
 
   return Discussion.create({
